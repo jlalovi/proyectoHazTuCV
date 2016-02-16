@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GestionCVsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CVs">
+    <Key>
+      <PropertyRef Name="IdCV" />
+    </Key>
+    <Property Name="IdCV" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="NombreCompleto" Type="nvarchar" MaxLength="256" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="256" />
+    <Property Name="Web" Type="nvarchar" MaxLength="256" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="256" />
+    <Property Name="ExperienciaLaboral" Type="nvarchar(max)" />
+    <Property Name="Cualificaciones" Type="nvarchar(max)" />
+    <Property Name="Educacion" Type="nvarchar(max)" />
+    <Property Name="Intereses" Type="nvarchar(max)" />
+    <Property Name="Referencias" Type="nvarchar(max)" />
+    <Property Name="TipoCV" Type="int" />
+  </EntityType>
+  <Association Name="FK_CVs_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="CVs" Type="Self.CVs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CVs">
+        <PropertyRef Name="IdCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GestionCVsModelStoreContainer">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CVs" EntityType="Self.CVs" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CVs_AspNetUsers" Association="Self.FK_CVs_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="CVs" EntitySet="CVs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

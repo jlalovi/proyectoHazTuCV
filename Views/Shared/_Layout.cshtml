@@ -7,7 +7,7 @@
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @RenderSection("Styles", false) @*Para aquellos CSSs que quiero cargar en vistas específicas*@
 </head>
 <body>
     <header class="navbar navbar-default menuCV navbar-fixed-top">
@@ -25,10 +25,12 @@
                 </a>
             </nav>
             <nav class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Mi CV", "Index", "CV")</li>
+                    </ul>
+                }                
                 @Html.Partial("_LoginPartial")
             </nav>
         </div>
@@ -37,11 +39,15 @@
         @RenderBody()
         <footer id="footer">
             <p><strong>&copy; DAW <a href="http://jlalovi.github.io/">jlalovi</a> @DateTime.Now.Year</strong></p>
-        </footer>
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+            </ul>
+</footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/MisJqueries")
+    @Scripts.Render("~/bundles/footerFijo")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

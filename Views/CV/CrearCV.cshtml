@@ -1,0 +1,146 @@
+﻿@model ProyectoCV.Models.CVs
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Crear CV";
+}
+
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+
+    <p>¡Bienvinido/a al menú de creación de tu Currículum! Lo primero es muy fácil: Introduce los datos que se te piden en
+    los diferentes apartados, y una vez finalices, presiona sobre el botón enviar para poder visualizar la presentación de
+    tu CV en diferentes estilos.</p>
+    <p>¡No te preocupes por aquellos campos que no completes o no termines de completar! Aún a pesar de ser tu único CV debido
+    a ser una versión gratuíta, podrás modificarlo tanto como te apetezca más adelante.</p>
+
+    @using (Html.BeginForm("CrearCV", "CV", FormMethod.Post, new { id = "formularioCV" }))
+    {
+        <div class="row">
+            <div class="col-sm-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a data-toggle="pill" href="#info_basica">Información básica</a></li>
+                    <li><a data-toggle="pill" href="#experiencia">Experiencia laboral</a></li>
+                    <li><a data-toggle="pill" href="#cualificaciones">Cualificaciones</a></li>
+                    <li><a data-toggle="pill" href="#educacion">Educación</a></li>
+                    <li><a data-toggle="pill" href="#intereses">Intereses</a></li>
+                    <li><a data-toggle="pill" href="#referencias">Referencias</a></li>
+                </ul>
+            </div>
+            <div class="form-horizontal">
+                <div class="col-sm-9">
+                    <div class="tab-content">
+                        <div id="info_basica" class="tab-pane fade in active">
+                            <div class="container">
+                                <h2>Información básica</h2>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NombreCompleto, htmlAttributes: new { @class = "control-label col-sm-3" })
+                                    @Html.EditorFor(model => model.NombreCompleto, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NombreCompleto, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-sm-3" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-sm-3" })
+                                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Web, htmlAttributes: new { @class = "control-label col-sm-3" })
+                                    @Html.EditorFor(model => model.Web, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Web, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-sm-3" })
+                                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div id="experiencia" class="tab-pane fade">
+                            <div class="container">
+                                <h2>Experiencia Laboral</h2>
+                                @Html.Partial("_MenuWYSIWYG")
+                                <div class="contenido_wysiwyg editorWYSIWYG" id="ExperienciaLaboral" contenteditable="true"></div>
+                            </div>
+                        </div>
+                        <div id="cualificaciones" class="tab-pane fade">
+                            <div class="container">
+                                <h2>Cualificaciones</h2>
+                                @Html.Partial("_MenuWYSIWYG")
+                                <div class="contenido_wysiwyg editorWYSIWYG" id="Cualificaciones" contenteditable="true"></div>
+                            </div>
+                        </div>
+                        <div id="educacion" class="tab-pane fade">
+                            <div class="container">
+                                <h2>Educación</h2>
+                                @Html.Partial("_MenuWYSIWYG")
+                                <div class="contenido_wysiwyg editorWYSIWYG" id="Educacion" contenteditable="true"></div>
+                            </div>
+                        </div>
+                        <div id="intereses" class="tab-pane fade">
+                            <div class="container">
+                                <h2>Intereses</h2>
+                                @Html.Partial("_MenuWYSIWYG")
+                                <div class="contenido_wysiwyg editorWYSIWYG" id="Intereses" contenteditable="true"></div>
+                            </div>
+                        </div>
+                        <div id="referencias" class="tab-pane fade">
+                            <div class="container">
+                                <h2>Referencias</h2>
+                                @Html.Partial("_MenuWYSIWYG")
+                                <div class="contenido_wysiwyg editorWYSIWYG" id="Referencias" contenteditable="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-8">
+                <button id="crearBtn" class="btn btn-primary" type="submit">Crear CV</button>
+            </div>
+        </div>
+    }
+ 
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#crearBtn").click(function (ev) {
+                ev.preventDefault();
+                $.post('@Url.Action("CrearCV", "CV")', {
+                    NombreCompleto: $("#NombreCompleto").val(),
+                    Email: $("#Email").val(),
+                    Telefono: $("#Telefono").val(),
+                    Web: $("#Web").val(),
+                    Direccion: $("#Direccion").val(),
+                    ExperienciaLaboral: $("#ExperienciaLaboral").html().trim(),
+                    Cualificaciones: $("#Cualificaciones").html().trim(),
+                    Educacion: $("#Educacion").html().trim(),
+                    Intereses: $("#Intereses").html().trim(),
+                    Referencias: $("#Referencias").html().trim()
+                }).done(function () {
+                    alert("¡CV creado!");
+                    window.location.href = '@Url.Action("Index", "CV")';
+                });
+            });
+        });
+    </script>
+    @Scripts.Render("~/bundles/SimpleWYSIWYG")
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/PanelWysiwyg.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/estilosPresentacionCV.css")" rel="stylesheet" type="text/css" />
+}

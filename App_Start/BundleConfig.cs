@@ -14,9 +14,21 @@ namespace ProyectoCV
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
             
-            // MIS JQUERIES
-            bundles.Add(new ScriptBundle("~/bundles/MisJQueries").Include(
-                        "~/Scripts/footerFijo.js"));
+            // MIS SCRIPTS
+            bundles.Add(new ScriptBundle("~/bundles/footerFijo").Include(
+                        "~/Scripts/MisScripts/footerFijo.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/SimpleWYSIWYG").Include(
+                        "~/Scripts/MisScripts/SimpleWYSIWYG.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/cambiarEstiloCV").Include(
+                        "~/Scripts/MisScripts/cambiarEstiloCV.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/postCrearCV").Include(
+                        "~/Scripts/MisScripts/postCrearCV.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/postEditarCV").Include(
+                        "~/Scripts/MisScripts/postEditarCV.js"));
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // preparado para la producción y podrá utilizar la herramienta de compilación disponible en http://modernizr.com para seleccionar solo las pruebas que necesite.

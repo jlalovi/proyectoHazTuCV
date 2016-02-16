@@ -1,9 +1,13 @@
-﻿/*FONTS*/
-@import url(http://weloveiconfonts.com/api/?family=brandico);
+﻿@import url(http://weloveiconfonts.com/api/?family=brandico|fontawesome);
 
 /* brandico */
 [class*="brandico-"]:before {
   font-family: 'brandico', sans-serif;
+}
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Hind:400,700);
@@ -100,7 +104,7 @@ textarea {
          color: #dedede;
     }
         .navbar-brand.logotipo:hover strong {
-             color: #a345fa;
+             color: #B466FC;
         }
 
 /* HOME */
@@ -122,6 +126,7 @@ textarea {
 }
     .row.subencabezado_home .jumbotron {
         background: #fff;
+        text-align: center;
     }
         .row.subencabezado_home .jumbotron h1 {
             color: #111;
@@ -137,8 +142,7 @@ textarea {
 
 /*muestras*/
 .row.muestras {
-    background: #f3f3f3;
-    padding: 20px;
+    padding: 0  20px 50px 20px;
 }
 
 /*comentarios*/
@@ -208,10 +212,12 @@ textarea {
 
 /* CONTACT */
 #map {
-    height:400px;
+    margin-top: 30px;
+    height:350px;
 }
+
 .datos_contacto {
-    height:300px;
+    text-align: center;
 }
 
 .social a{
@@ -242,7 +248,16 @@ footer {
         padding: 20px;
         color: #dedede;
         font-size: 16px;
+        text-align: center;
     }
+    #footer ul.nav > li > a {
+        text-align: center;
+        font-size: 16px;
+        padding: 20px;
+    }
+        #footer ul.nav > li > a:hover {
+            background: rgba(0,0,0,0.5);
+        }
 
 
 /*QUERIES*/
@@ -264,12 +279,13 @@ footer {
         font-size: 18px;
     }
 
-    .row.muestras {
-        padding: 0px;
-    }
-
     /*ABOUT*/
     .row.contenido_about .jlalovi_logo {
         float: right;
+    }
+
+    /*FOOTER*/
+    footer p {
+        display: inline-block;
     }
 }

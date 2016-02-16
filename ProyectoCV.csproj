@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -153,6 +155,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CVController.cs" />
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>GestionCVsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CVs.cs">
+      <DependentUpon>GestionCVsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GestionCVsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionCVsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GestionCVsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionCVsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GestionCVsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionCVsModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -171,6 +195,18 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\estilosPresentacionCV.css" />
+    <Content Include="Content\PanelWysiwyg.css" />
+    <Content Include="Models\GestionCVsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GestionCVsModel.edmx</DependentUpon>
+      <LastGenOutput>GestionCVsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GestionCVsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GestionCVsModel.edmx</DependentUpon>
+      <LastGenOutput>GestionCVsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -188,6 +224,13 @@
     <Content Include="images\pluma.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\GestionCVsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GestionCVsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\GestionCVsModel.edmx.diagram">
+      <DependentUpon>GestionCVsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -196,12 +239,18 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\footerFijo.js" />
+    <Content Include="Scripts\MisScripts\cambiarEstiloCV.js" />
+    <Content Include="Scripts\MisScripts\footerFijo.js" />
+    <Content Include="Scripts\MisScripts\postCrearCV.js" />
+    <Content Include="Scripts\MisScripts\postEditarCV.js" />
+    <Content Include="Scripts\MisScripts\SimpleWYSIWYG.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -236,6 +285,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\CV\Index.cshtml" />
+    <Content Include="Views\CV\CrearCV.cshtml" />
+    <Content Include="Views\Shared\_MenuWYSIWYG.cshtml" />
+    <Content Include="Views\CV\EditarCV.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -246,6 +299,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

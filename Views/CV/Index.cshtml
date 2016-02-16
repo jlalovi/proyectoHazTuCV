@@ -1,0 +1,74 @@
+﻿@model ProyectoCV.Models.CVs
+
+@{
+    ViewBag.Title = "Mi CV";
+}
+
+<div class="container">
+    
+    <h2>@ViewBag.Title</h2>
+    
+    @Html.ActionLink("Editar campos", "EditarCV", "CV", htmlAttributes: new { @class = "btn btn-primary" })
+    @*Html.ActionLink("Agregar foto", "AgregarFoto", "CV", htmlAttributes: new { @class = "btn btn-primary" })*@
+    <button type="button" class="btn btn-primary">Imprimir CV</button>
+    
+    <h3>Tipo de CV</h3>
+    <label class="radio-inline"><input class="tiposCV" type="radio" name="tipocv" value="1">Tipo 1</label>
+    <label class="radio-inline"><input class="tiposCV" type="radio" name="tipocv" value="2">Tipo 2</label>
+    <label class="radio-inline"><input class="tiposCV" type="radio" name="tipocv" value="3">Tipo 3</label>
+    <label class="radio-inline"><input class="tiposCV" type="radio" name="tipocv" value="4">Tipo 4</label>
+    <label class="radio-inline"><input class="tiposCV" type="radio" name="tipocv" value="5">Tipo 5</label>
+    <label class="radio-inline"><input class="tiposCV" type="radio" name="tipocv" value="6">Tipo 6</label>
+    <button id="guardarEstilo" type="button" class="btn btn-primary">Guardar estilo</button>
+
+    <div id="presentacionCV" class="presentacionCV">
+        <h1 class="titulo_nombre_completo">@Html.DisplayFor(model => model.NombreCompleto)</h1>
+        <div class="aptCV datos_personales">
+            <p class="email"><strong>Email:</strong> @Html.DisplayFor(model => model.Email)</p>
+            <p class="telefono"><strong>Teléfono</strong> @Html.DisplayFor(model => model.Telefono)</p>
+            <p class="website"><strong>Sitio web:</strong> @Html.DisplayFor(model => model.Web)</p>
+            <p class="direccion"><strong>Dirección:</strong> @Html.DisplayFor(model => model.Direccion)</p>
+        </div>
+        <div class="aptCV experiencia_laboral">
+            <h2 class="titular">Experiencia Laboral</h2>
+            <div class="contenido_wysiwyg">@Html.Raw(Model.ExperienciaLaboral)</div>
+        </div>
+        <div class="aptCV cualificaciones">
+            <h2 class="titular">Cualificaciones</h2>
+            <div class="contenido_wysiwyg">@Html.Raw(Model.Cualificaciones)</div>
+        </div>
+        <div class="aptCV educacion">
+            <h2 class="titular">Educación</h2>
+            <div class="contenido_wysiwyg">@Html.Raw(Model.Educacion)</div>
+        </div>
+        <div class="aptCV intereses">
+            <h2 class="titular">Intereses</h2>
+            <div class="contenido_wysiwyg ">@Html.Raw(Model.Intereses)</div>
+        </div>
+        <div class="aptCV referencias">
+            <h2 class="titular">Referencias</h2>
+            <div class="contenido_wysiwyg">@Html.Raw(Model.Referencias)</div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="@Url.Content("~/Content/estilosPresentacionCV.css")" rel="stylesheet" type="text/css" />
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/cambiarEstiloCV")
+    <script>
+        $(document).ready(function () {
+            $("#guardarEstilo").click(function (ev) {
+                ev.preventDefault();
+                $.post('@Url.Action("EditarEstiloCV", "CV")', {
+                    TipoCV: $("input[name=tipocv]:checked").val()
+                }).done(function () {
+                    alert("¡Estilo guardado!");
+                });
+            });
+        });
+    </script>
+}

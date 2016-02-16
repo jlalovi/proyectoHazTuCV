@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row contenido_about">
-        <div class="col-md-3 datos_contacto">
+        <div class="col-sm-3 datos_contacto">
             <h1>@ViewBag.Title</h1>
             <address>
                 <p>Javier Latorre López-Villalta</p>
@@ -20,21 +20,21 @@
                 <a class="linkedin" href="https://github.com/jlalovi"><span class="brandico-linkedin-rect"></span></a>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-sm-9">
             <div id="map"></div>
         </div>
     </div>
 </div>
-    @section scripts
+@section scripts
 {
-        <script>
-            function initMap() {
-                var mapDiv = document.getElementById('map');
-                var map = new google.maps.Map(mapDiv, {
-                    center: { lat: 37.763753, lng: -3.788239 },
-                    zoom: 18
-                });
-            }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-    }
+    <script>
+        function initMap() {
+            var mapDiv = document.getElementById('map');
+            var map = new google.maps.Map(mapDiv, {
+                center: { lat: 37.763753, lng: -3.788239 },
+                zoom: 18
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+}

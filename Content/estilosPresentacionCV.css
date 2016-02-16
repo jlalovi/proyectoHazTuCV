@@ -1,0 +1,103 @@
+﻿/* Reinicio de valores por defecto */
+.presentacionCV *, .contenido_wysiwyg * {
+    padding: 0;
+    margin: 0;
+}
+
+/* Contenedor del CV (Efecto 'Folio de papel') */
+.presentacionCV {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 5%;
+    background: #fff;
+    position: relative;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+    .presentacionCV:before, .presentacionCV:after
+    {
+	    content:"";
+        position:absolute; 
+        z-index:-1;
+        box-shadow:0 0 20px rgba(0,0,0,0.8);
+        top:10px;
+        bottom:10px;
+        left:0;
+        right:0;
+        border-radius:100px / 10px;
+    } 
+    .presentacionCV:after
+    {
+        right:10px; 
+        left:auto; 
+        transform:skew(8deg) rotate(3deg);
+    }
+
+/* TIPO 1: Estilos por defecto (Siempre se aplica, el resto de tipos sobreescriben este estilo) */
+.presentacionCV .titulo_nombre_completo {
+    text-align: center;
+    margin: 20px;
+    font-size: 2.5em;
+}
+
+.aptCV .titular {
+    font-size: 2em;
+    margin: 15px 0 0;
+    border-bottom: 2px solid #cdcdcd;
+}
+.aptCV p {
+    font-size: 1em;
+}
+.contenido_wysiwyg {
+    margin-left: 2%;
+}
+    .contenido_wysiwyg h3 {
+        margin-top: 10px;
+        font-size: 1.4em;
+    }
+    .contenido_wysiwyg div {
+        font-size: 1em;
+    }
+    .contenido_wysiwyg ul,
+    .contenido_wysiwyg ol {
+        margin-left: 30px;
+    }
+
+/* TIPO 2 */
+.presentacionCV.tipo2 .titulo_nombre_completo {
+    color: red;
+}
+
+/* TIPO 3 */
+.presentacionCV.tipo3 .titulo_nombre_completo {
+    color: green;
+}
+
+/* TIPO 4 */
+.presentacionCV.tipo4 .titulo_nombre_completo {
+    color: yellow;
+}
+
+/* TIPO 5 */
+.presentacionCV.tipo5 .titulo_nombre_completo {
+    color: purple;
+}
+
+/* TIPO 6 */
+.presentacionCV.tipo6 .titulo_nombre_completo {
+    color: blue;
+}
+
+
+
+/*  QUERIES */
+@media screen and (min-width: 769px) {
+    /*TIPO1*/
+    .presentacionCV .datos_personales {
+        margin-left: 20%;
+    }
+    .presentacionCV .datos_personales p{
+        width: 40%;
+        display: inline-block;
+        vertical-align: top;
+    }
+}
