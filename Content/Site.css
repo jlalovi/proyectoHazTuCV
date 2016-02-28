@@ -10,12 +10,41 @@
   font-family: 'FontAwesome', sans-serif;
 }
 
+.clear {
+    clear:both;
+}
+
+.filaGuardar {
+    margin: 15px;
+}
+.btnGuardar {
+        color: rgba(0,0,0,0.9);
+        font-size: 30px;
+        margin: 0 10px;
+    }
+        .btnGuardar:hover,
+        .btnGuardar:focus {
+            color: rgba(0,0,0,0.8);
+        }
+
 @import url(https://fonts.googleapis.com/css?family=Hind:400,700);
 body {
     font-family: 'Hind', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1, h2, h3, h4, h5, h6, p, a, li {
     font-family: 'Hind', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.encabezado_pagina {
+    font-family: times, Times New Roman, times-roman, georgia, serif;
+    border-bottom: solid 2px #A345FA;
+	color: #111;
+	margin: 30px 0;
+	padding: 0px 0px 6px 0px;
+	font-size: 50px;
+	line-height: 44px;
+	letter-spacing: -2px;
+	font-weight: bold;
 }
 
 /* Estilos bootstrap sobreescritos */
@@ -35,6 +64,23 @@ a {
         color:#A345FA;
     }
 
+.form-control:focus {
+    border-color: #9B66CC;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(187, 138, 232);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(187, 138, 232);
+}
+.form-control.errorValidacion:focus {
+    border-color: #D42525;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(128, 55, 55);;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(128, 55, 55);;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(220, 235, 165) inset; /*Background al ser autorrellenados los inputs*/
+}
 
 .dl-horizontal dt {
     white-space: normal;
@@ -121,6 +167,46 @@ textarea {
             color: #fff;
         }
 
+    .row.encabezado_home p {
+        margin-bottom: 25px;
+    }
+    .row.encabezado_home img {
+        display: none;
+        width: 450px;
+        float: right;
+        position: absolute;
+        transition: all .4s;
+        opacity: .8;
+    }
+    .row.encabezado_home .cvs3d {
+        max-width: 1200px;
+        position: relative;
+    }
+        .row.encabezado_home .cv3d1 {
+            top: 90px;
+            right: 420px;
+        }
+            .row.encabezado_home .cv3d1:hover {
+                top: 80px;
+                opacity: 1;
+            }
+        .row.encabezado_home .cv3d2 {
+            top: 0px;
+            right: 170px;
+        }
+            .row.encabezado_home .cv3d2:hover {
+                top: -10px;
+                opacity: 1;
+            }
+        .row.encabezado_home .cv3d3 {
+            top: -90px;
+            right: -80px;
+        }
+            .row.encabezado_home .cv3d3:hover {
+                top: -100px;
+                opacity: 1;
+            }
+
 .row.subencabezado_home {
     background: #fff;
 }
@@ -143,6 +229,19 @@ textarea {
 /*muestras*/
 .row.muestras {
     padding: 0  20px 50px 20px;
+}
+    .row.muestras .nav li a {
+        font-size: 1.2em;
+        border: 2px solid #999;
+        font-weight: bold;
+        color: #7635B3;
+    }
+    .row.muestras .nav li.active a {
+        border: 2px solid #999;
+        color: #444;
+    }
+.imagenes_tab img {
+    width: 100%;
 }
 
 /*comentarios*/
@@ -210,11 +309,36 @@ textarea {
         display: block;
     }
 
-/* CONTACT */
-#map {
-    margin-top: 30px;
-    height:350px;
+/* CREAR CV */
+.tab-content h2 {
+    margin: 5px 0 15px;
+    color: #111;
 }
+
+.nav-pills.estiloPills > li.active > a, 
+.nav-pills.estiloPills > li.active > a:hover,
+.nav-pills.estiloPills > li.active > a:focus {
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.nav-pills.estiloPills > li > a {
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    color: #111;
+    font-weight: bold;
+}
+
+/* CONTACT */
+.contenedor_mapa {
+    padding-right: 0;
+    padding-left: 0;
+}
+    #map {
+        margin-top: 30px;
+        height:350px;
+    }
 
 .datos_contacto {
     text-align: center;
@@ -254,6 +378,7 @@ footer {
         text-align: center;
         font-size: 16px;
         padding: 20px;
+        color: #dedede;
     }
         #footer ul.nav > li > a:hover {
             background: rgba(0,0,0,0.5);
@@ -264,19 +389,29 @@ footer {
 
 @media screen and (min-width: 769px) {
     
-    /*GENERAL*/
-    
+    /*GENERAL*/    
     .body-content {
         margin-top: 15px;
     }
 
     /*HOME*/
-
     .row.subencabezado_home .jumbotron h1 {
         font-size: 40px;
     }
     .row.subencabezado_home .jumbotron p {
         font-size: 18px;
+    }
+    .row.muestras .nav li a {
+        font-size: 1.2em;
+        border: none;
+        border-bottom: 2px solid #999;
+        font-weight: bold;
+        color: #7635B3;
+    }
+    .row.muestras .nav li.active a {
+        border: 2px solid #999;
+        border-bottom-color: transparent;
+        color: #444;
     }
 
     /*ABOUT*/
@@ -284,8 +419,53 @@ footer {
         float: right;
     }
 
+    /*CONTACT*/
+    .contenedor_mapa {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    #map {
+        margin-top: 0;
+    }
+
+    /*CREAR/EDITAR CV*/
+    .colContenidoPills {
+        border-left: 3px solid rgba(0,0,0,0.9);
+        border-bottom: 3px solid rgba(0,0,0,0.9);
+    }
+    .collPills {
+        padding-right: 0;
+    }
+    .nav-pills.estiloPills > li > a {
+        padding: 15px 15px;
+    }
+    .colContenidoPills .tab-content {
+        min-height: 307px;
+    }
+
     /*FOOTER*/
     footer p {
         display: inline-block;
+    }
+  
+}
+
+@media (min-width: 900px) {
+    /*HOME*/
+    .row.encabezado_home {
+        height: 500px;
+    }
+        .row.encabezado_home .cv3d1,
+        .row.encabezado_home .cv3d2 {
+            display: initial;
+        }
+}
+
+@media (min-width: 1200px) {
+    .imagenes_tab img {
+        padding: 0 6%;
+    }
+    .row.encabezado_home .cv3d3 {
+        display: initial;
     }
 }

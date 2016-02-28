@@ -2012,3 +2012,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   })
 
 }(window.jQuery);
+
+// Inicialiciación de los tooltips
+
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});

@@ -11,20 +11,16 @@ namespace ProyectoCV.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations; // Necesario para las anotaciones como [Required], etc.
+    using System.ComponentModel.DataAnnotations;
     
     public partial class CVs
     {
-        
         public string IdCV { get; set; }
-
         [Display(Name = "Nombre Completo")]
         public string NombreCompleto { get; set; }
         public string Email { get; set; }
         [Display(Name = "Teléfono")]
         public string Telefono { get; set; }
-        //[RegularExpression(@"https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$",
-        //ErrorMessage = "Aségurate de introducir una dirección web correcta")]
         public string Web { get; set; }
         [Display(Name = "Dirección")]
         public string Direccion { get; set; }
@@ -33,11 +29,9 @@ namespace ProyectoCV.Models
         public string Cualificaciones { get; set; }
         [Display(Name = "Educación")]
         public string Educacion { get; set; }
-        [Display(Name = "Intereses")]
         public string Intereses { get; set; }
         public string Referencias { get; set; }
-        [Display(Name = "Tipo CV")]
-        [Range(1, 6)]
+        [Display(Name = "Tipo de CV")]
         public Nullable<int> TipoCV { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }

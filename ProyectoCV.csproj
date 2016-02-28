@@ -196,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\estilosPresentacionCV.css" />
+    <Content Include="Content\impresionCV.css" />
     <Content Include="Content\PanelWysiwyg.css" />
     <Content Include="Models\GestionCVsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -243,7 +244,9 @@
     <Content Include="Scripts\MisScripts\footerFijo.js" />
     <Content Include="Scripts\MisScripts\postCrearCV.js" />
     <Content Include="Scripts\MisScripts\postEditarCV.js" />
+    <Content Include="Scripts\MisScripts\postEditarEstiloCV.js" />
     <Content Include="Scripts\MisScripts\SimpleWYSIWYG.js" />
+    <Content Include="Scripts\MisScripts\validaCV.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -289,6 +292,7 @@
     <Content Include="Views\CV\CrearCV.cshtml" />
     <Content Include="Views\Shared\_MenuWYSIWYG.cshtml" />
     <Content Include="Views\CV\EditarCV.cshtml" />
+    <Content Include="Views\CV\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

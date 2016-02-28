@@ -30,6 +30,12 @@ namespace ProyectoCV
             bundles.Add(new ScriptBundle("~/bundles/postEditarCV").Include(
                         "~/Scripts/MisScripts/postEditarCV.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/postEditarEstiloCV").Include(
+                        "~/Scripts/MisScripts/postEditarEstiloCV.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/validaCV").Include(
+                        "~/Scripts/MisScripts/validaCV.js"));
+
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // preparado para la producción y podrá utilizar la herramienta de compilación disponible en http://modernizr.com para seleccionar solo las pruebas que necesite.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

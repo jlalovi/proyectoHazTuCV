@@ -1,0 +1,29 @@
+﻿body {
+    padding: 0;
+}
+
+header,
+.encabezado_pagina,
+.btnPresentacionCV,
+.filaTiposCV,
+footer {
+    display: none;
+}
+
+.presentacionCV .titulo_nombre_completo {
+    margin-top: 0;
+}
+
+.presentacionCV {
+    box-shadow:none;
+    margin: 0;
+    padding: 0;
+}
+    .presentacionCV:before, .presentacionCV:after
+    {
+        box-shadow:none;
+    }
+
+@page { 
+    margin: 2cm;
+}

@@ -4,13 +4,13 @@
 }
 
 <div class="container">
-    <h2>@ViewBag.Title</h2>
+    <h1 class="encabezado_pagina">@ViewBag.Title</h1>
 
     @using (Html.BeginForm("EditarCV", "CV", FormMethod.Post, new { id = "formularioCV" }))
     {
         <div class="row">
-            <div class="col-sm-3">
-                <ul class="nav nav-pills nav-stacked">
+            <div class="col-sm-3 collPills">
+                <ul class="nav nav-pills nav-stacked estiloPills">
                     <li class="active"><a data-toggle="pill" href="#info_basica">Información básica</a></li>
                     <li><a data-toggle="pill" href="#experiencia">Experiencia laboral</a></li>
                     <li><a data-toggle="pill" href="#cualificaciones">Cualificaciones</a></li>
@@ -20,40 +20,50 @@
                 </ul>
             </div>
             <div class="form-horizontal">
-                <div class="col-sm-9">
+                <div class="col-sm-9 colContenidoPills">
                     <div class="tab-content">
                         <div id="info_basica" class="tab-pane fade in active">
                             <div class="container">
                                 <h2>Información básica</h2>
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.NombreCompleto, htmlAttributes: new { @class = "control-label col-sm-3" })
-                                    @Html.EditorFor(model => model.NombreCompleto, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.NombreCompleto, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.NombreCompleto, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                    <div class="col-sm-8">
+                                        @Html.EditorFor(model => model.NombreCompleto, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NombreCompleto, "", new { @class = "text-danger NombreCompleto" })
+                                    </div>                                    
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-sm-3" })
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                    <div class="col-sm-8">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger Email" })
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-sm-3" })
-                                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                    <div class="col-sm-8">
+                                        @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger Telefono" })
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Web, htmlAttributes: new { @class = "control-label col-sm-3" })
-                                    @Html.EditorFor(model => model.Web, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Web, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Web, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                    <div class="col-sm-8">
+                                        @Html.EditorFor(model => model.Web, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Web, "", new { @class = "text-danger Web" })
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-sm-3" })
-                                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                    <div class="col-sm-8">
+                                        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger Direccion" })
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,11 +116,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4 col-sm-offset-8">
-                <button id="editarBtn" class="btn btn-primary" type="submit">Guardar cambios</button>
-                @Html.ActionLink("Cancelar", "Index", "CV", htmlAttributes: new { @class = "btn btn-primary" })
-            </div>
+        <div class="row text-center filaGuardar">
+            <a href="" id="editarBtn" type="button" class="btnGuardar"><span class="glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="left" title="Guardar cambios"></span></a>
+            <a href="@Url.Action("Index", "CV")" type="button" class="btnGuardar"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="right" title="Cancelar cambios"></span></a>
         </div>
     }
 
@@ -118,32 +126,13 @@
 
 @section scripts
 {
-    <script>
-        $(document).ready(function () {
-            $("#editarBtn").click(function (ev) {
-                ev.preventDefault();
-                $.post('@Url.Action("EditarCV", "CV")', {
-                    NombreCompleto: $("#NombreCompleto").val(),
-                    Email: $("#Email").val(),
-                    Telefono: $("#Telefono").val(),
-                    Web: $("#Web").val(),
-                    Direccion: $("#Direccion").val(),
-                    ExperienciaLaboral: $("#ExperienciaLaboral").html().trim(),
-                    Cualificaciones: $("#Cualificaciones").html().trim(),
-                    Educacion: $("#Educacion").html().trim(),
-                    Intereses: $("#Intereses").html().trim(),
-                    Referencias: $("#Referencias").html().trim()
-                }).done(function () {
-                    alert("¡Datos guardados!");
-                    window.location.href = '@Url.Action("Index", "CV")';
-                });
-            });
-        });
-    </script>
+    @Scripts.Render("~/bundles/postEditarCV")
     @Scripts.Render("~/bundles/SimpleWYSIWYG")
+    @Scripts.Render("~/bundles/validaCV")
 }
 
 @section Styles {
     <link href="@Url.Content("~/Content/PanelWysiwyg.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/estilosPresentacionCV.css")" rel="stylesheet" type="text/css" />
 }
 

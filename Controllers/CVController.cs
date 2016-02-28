@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Entity;
 using ProyectoCV.Models; // Para poder declarar el dbcontext 'bbdd' sin tener que indicar la ruta completa.
 using Microsoft.AspNet.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoCV.Controllers
 {
@@ -20,8 +21,9 @@ namespace ProyectoCV.Controllers
         public ActionResult Index()
         {
             CVs CV = bbdd.CVs.Find(User.Identity.GetUserId());
-            if ( CV != null)
+            if ( CV != null) {
                 return View(CV);
+            }            
             else
                 return View("CrearCV");
         }
@@ -32,8 +34,9 @@ namespace ProyectoCV.Controllers
             CVs CV = bbdd.CVs.Find(User.Identity.GetUserId());
             if (CV != null)
                 return RedirectToAction("Index");
-            else
+            else {
                 return View();
+            }
         }
 
         [HttpPost]
@@ -82,23 +85,23 @@ namespace ProyectoCV.Controllers
         public ActionResult EditarEstiloCV([Bind(Include = "TipoCV")] CVs CV)
         {
             CVs CVAntes = bbdd.CVs.Find(User.Identity.GetUserId());
+            CVs CVAhora = bbdd.CVs.Find(User.Identity.GetUserId());
 
-            CV.IdCV = User.Identity.GetUserId();
-            CV.NombreCompleto = CVAntes.NombreCompleto;
-            CV.Email = CVAntes.Email;
-            CV.Telefono = CVAntes.Telefono;
-            CV.Web = CVAntes.Web;
-            CV.Direccion = CVAntes.Direccion;
-            CV.ExperienciaLaboral = CVAntes.ExperienciaLaboral;
-            CV.Cualificaciones = CVAntes.Cualificaciones;
-            CV.Cualificaciones = CVAntes.Cualificaciones;
-            CV.Intereses = CVAntes.Cualificaciones;
+            CVAhora.TipoCV = CV.TipoCV;
 
-            bbdd.Entry(CVAntes).CurrentValues.SetValues(CV);
+            bbdd.Entry(CVAntes).CurrentValues.SetValues(CVAhora);
             bbdd.SaveChanges();
 
             return RedirectToAction("Index"); // Desde la consulta tipo AJAX ($post), que estoy haciendo, no captura este return
                                               // No obstante dejo esto abierto por si decido hacerlo web 2.0 en futuro
+        }
+
+        
+        public ActionResult Perfil(String id)
+        {
+            String nombreCompleto = id.Replace("_", " ");
+            CVs CV = bbdd.CVs.Find(User.Identity.GetUserId());
+            return View(CV);
         }
     }
 }

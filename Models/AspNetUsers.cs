@@ -26,6 +26,10 @@ namespace ProyectoCV.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+
+        // Dos nuevas columnas que he agregado
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
     
         public virtual CVs CVs { get; set; }
     }

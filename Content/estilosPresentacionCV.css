@@ -1,4 +1,9 @@
-﻿/* Reinicio de valores por defecto */
+﻿/* FONTS de CVs */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+@import url(https://fonts.googleapis.com/css?family=Bitter:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/* Reinicio de valores por defecto */
 .presentacionCV *, .contenido_wysiwyg * {
     padding: 0;
     margin: 0;
@@ -7,7 +12,7 @@
 /* Contenedor del CV (Efecto 'Folio de papel') */
 .presentacionCV {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 30px auto 50px;
     padding: 5%;
     background: #fff;
     position: relative;
@@ -32,11 +37,53 @@
         transform:skew(8deg) rotate(3deg);
     }
 
-/* TIPO 1: Estilos por defecto (Siempre se aplica, el resto de tipos sobreescriben este estilo) */
+    /* Botones Imprimir // Editar */
+    .presentacionCV .btnPresentacionCV {
+        position: absolute;
+        right: 2%;
+        font-size: 23px;
+        margin: 0;
+        padding: 6px 12px;
+        color: #dedede;
+        background: rgba(0,0,0,0.8);
+        border-radius: 100%;        
+        transition: visibility 0s, opacity 0.3s linear, background linear 0.2s;
+    }
+        .presentacionCV .btnPresentacionCV:hover,
+        .presentacionCV .btnPresentacionCV:focus {
+            background: rgba(0,0,0,0.9);
+        }
+        .presentacionCV .btnPresentacionCV.editar {
+            top: 25px;
+        }
+        .presentacionCV .btnPresentacionCV.imprimir {
+            top: 80px;
+        }
+    .btnGuardarEstilo {
+        color: rgba(0,0,0,0.8);
+        font-size: 30px;
+    }
+        .btnGuardarEstilo:hover {
+            color: rgba(0,0,0,0.9);
+        }
+
+/* Estilos por defecto (Siempre se aplica, Los tipos sobreescriben este estilo o añaden nuevas propiedades) */
+.presentacionCV .aptCV b,
+.presentacionCV .aptCV h2,
+.presentacionCV .aptCV strong {
+    color: #000;
+}
+.presentacionCV .aptCV h3,
+.presentacionCV .aptCV i {
+    color: #111;
+}
+
 .presentacionCV .titulo_nombre_completo {
     text-align: center;
-    margin: 20px;
-    font-size: 2.5em;
+    margin: 20px 0;
+    font-size: 3.4em;
+    border-bottom: none;
+    color: #000;
 }
 
 .aptCV .titular {
@@ -47,9 +94,20 @@
 .aptCV p {
     font-size: 1em;
 }
-.contenido_wysiwyg {
-    margin-left: 2%;
+
+.aptCV .contenido_wysiwyg br {
+    display:none; /* Elimino todos los br que se han generado con el editor WYSIWYG */
 }
+
+.contenido_wysiwyg.editorWYSIWYG {
+    height: 215px;
+    overflow-y: scroll;
+    border-bottom: none;
+    margin-left: 0;
+}
+    .contenido_wysiwyg.editorWYSIWYG:hover {
+        background: #f0f0f0;
+    }
     .contenido_wysiwyg h3 {
         margin-top: 10px;
         font-size: 1.4em;
@@ -62,36 +120,170 @@
         margin-left: 30px;
     }
 
+/* TIPO 1 */
+.presentacionCV.tipo1 .datos_personales .titular {
+    display: none;
+}
+.presentacionCV.tipo1 .contenido_wysiwyg {
+    margin-left: 2%;
+}
+
 /* TIPO 2 */
 .presentacionCV.tipo2 .titulo_nombre_completo {
-    color: red;
+    font-family: serif;
+    font-size: 3.5em;
+    text-align: left;
+    border-bottom: 2px solid;
+}
+.presentacionCV.tipo2 .aptCV .titular {
+    font-family: serif;
+    font-size: 1.4em;
+    text-align: left;
+    border-bottom: none;
+    font-weight: bold;
 }
 
 /* TIPO 3 */
 .presentacionCV.tipo3 .titulo_nombre_completo {
-    color: green;
+    font-family: 'Raleway', sans-serif;
+    font-size: 3em;
+    text-align: left;
+    padding-bottom: .4em;
+    border-bottom: 2px solid;
+    font-weight: 800;
+    color: #000;
+}
+.presentacionCV.tipo3 .aptCV .titular {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    text-align: left;
+    border-bottom: none;
+    font-weight: 800;
+    color: #fff;
+    background: #000;
+    padding: 5px 8px;
+}
+
+.presentacionCV.tipo3 .aptCV h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+}
+.presentacionCV.tipo3 .aptCV ul {
+    list-style: square;
+}
+.presentacionCV.tipo3 .aptCV ol {
+    list-style: upper-roman;
 }
 
 /* TIPO 4 */
 .presentacionCV.tipo4 .titulo_nombre_completo {
-    color: yellow;
+    font-family: 'Bitter', serif;
+}
+.presentacionCV.tipo4 .aptCV .titular {
+    font-family: 'Bitter', serif;
+    text-align: center;
+    padding-bottom: 0.2em;
+    font-size: 1.4em;
+    margin: 15px 0 20px;
+}
+.presentacionCV.tipo4 .datos_personales .titular {
+    display: none;
+}
+.presentacionCV.tipo4 .contenido_wysiwyg {
+    margin-left: 2%;
+}
+.presentacionCV.tipo4 .contenido_wysiwyg h3 {
+    margin-left: -2%;
 }
 
 /* TIPO 5 */
 .presentacionCV.tipo5 .titulo_nombre_completo {
-    color: purple;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3.5em;
+    text-align: left;
+    border-bottom: 2px solid;
+    padding-bottom: 5px;
+}
+.presentacionCV.tipo5 .aptCV .titular {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.7em;
+    text-align: left;
+    border-bottom: none;
+    text-transform: uppercase;
+    color: #111;
+}
+.presentacionCV.tipo5 .datos_personales .titular {
+    display: none;
+}
+.presentacionCV.tipo5 .contenido_wysiwyg {
+    margin-left: 4%;
+}
+.presentacionCV.tipo5 .contenido_wysiwyg h3 {
+    margin-left: -2%;
 }
 
 /* TIPO 6 */
 .presentacionCV.tipo6 .titulo_nombre_completo {
-    color: blue;
+    font-family: 'Raleway', sans-serif;
+    font-size: 3em;
+    text-align: left;
+    padding-bottom: .4em;
+    border-bottom: 2px solid;
+    font-weight: 800;
+    color: #000;
 }
-
+.presentacionCV.tipo6 .aptCV .titular {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    text-align: left;
+    border-bottom: none;
+    font-weight: 800;
+    color: #fff;
+    background: #000;
+    padding: 5px 8px;
+}
+.presentacionCV.tipo6 .datos_personales .titular {
+    margin-bottom: 6px;
+}
+.presentacionCV.tipo6 .aptCV h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+}
+.presentacionCV.tipo6 .aptCV ul {
+    list-style: square;
+}
+.presentacionCV.tipo6 .aptCV ol {
+    list-style: upper-roman;
+}
+.presentacionCV.tipo6 .contenido_wysiwyg {
+    margin-left: 2%;
+}
+.presentacionCV.tipo6 .contenido_wysiwyg h3 {
+    margin-left: -2%;
+}
 
 
 /*  QUERIES */
 @media screen and (min-width: 769px) {
-    /*TIPO1*/
+    /* Botones Imprimir / Editar */
+    .presentacionCV .btnPresentacionCV {
+        visibility: hidden;
+        opacity: 0;
+    }
+        .presentacionCV:hover .btnPresentacionCV { 
+            visibility: visible;
+            opacity: 1;
+        }
+        .presentacionCV .btnPresentacionCV.editar {
+            right: 3%;
+            top: 5%;
+        }
+        .presentacionCV .btnPresentacionCV.imprimir {
+            right: 10%;
+            top: 5%;
+        }
+    
+    /*Estilos por defecto*/
     .presentacionCV .datos_personales {
         margin-left: 20%;
     }
@@ -100,4 +292,65 @@
         display: inline-block;
         vertical-align: top;
     }
+
+    /*Tipo 2*/
+    .presentacionCV.tipo2 .datos_personales {
+        margin-left: 0;
+    }
+    .presentacionCV.tipo2 .aptCV .titular {
+        width: 20%;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .presentacionCV.tipo2 .aptCV .contenido_wysiwyg,
+    .presentacionCV.tipo2 .aptCV .contenido_datosPersonales {
+        width: 79%;
+        display: inline-block;
+        margin-top: 18px;
+        padding-left: 15px;
+    }
+
+    /*Tipo 3*/
+    .presentacionCV.tipo3 .datos_personales {
+        margin-left: 0;
+    }
+    .presentacionCV.tipo3 .aptCV .titular {
+        width: 20%;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .presentacionCV.tipo3 .aptCV .contenido_wysiwyg,
+    .presentacionCV.tipo3 .aptCV .contenido_datosPersonales {
+        width: 79%;
+        display: inline-block;
+        margin-top: 18px;
+        padding-left: 15px;
+    }
+
+    /*Tipo 4*/
+    .presentacionCV.tipo4 .datos_personales {
+        margin-left: 0%;
+        text-align: center;
+    }
+    .presentacionCV.tipo4 .datos_personales p {
+        width: 100%;
+        display: inline;
+        vertical-align: baseline;
+    }
+        .presentacionCV.tipo4 .datos_personales p:nth-child(2):after { /* El estilo se lo aplico al 2º hijo, 'Teléfono' */
+            content: '\A';     /* Truco para hacer un salto de línea */
+            white-space: pre;  /*                                    */
+        }
+        .presentacionCV.tipo4 .datos_personales p:nth-child(1):after,
+        .presentacionCV.tipo4 .datos_personales p:nth-child(3):after { /* Separador '§' en hijos 1 y 3 */
+            padding: 0 5px 0 12px;
+            content: '§';
+            font-size: 1.5em;
+        }
+
+    /*Tipo 6*/
+    .presentacionCV.tipo6 .datos_personales {
+        margin-left: 0%;
+    }
 }
+

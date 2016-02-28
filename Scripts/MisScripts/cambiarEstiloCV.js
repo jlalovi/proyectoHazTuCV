@@ -1,9 +1,10 @@
 ﻿$(document).ready(function () {
-    $(".tiposCV").change(function (ev) {
+    $(".tiposCV").change(cambiaEstiloCV);
+    function cambiaEstiloCV(ev) {
         var tipoCV = ev.target.value;
         switch (tipoCV) {
             case "1":
-                $("#presentacionCV").attr("class", "presentacionCV");
+                $("#presentacionCV").attr("class", "presentacionCV tipo1");
                 break;
             case "2":
                 $("#presentacionCV").attr("class", "presentacionCV tipo2");
@@ -21,7 +22,7 @@
                 $("#presentacionCV").attr("class", "presentacionCV tipo6");
                 break;
             default:
-                $("#presentacionCV").attr("class", "presentacionCV");
+                $("#presentacionCV").attr("class", "presentacionCV tipo1");
         }
-    });
+    }
 });
